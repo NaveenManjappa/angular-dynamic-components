@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from '../../Models/User';
 
 @Component({
@@ -7,5 +7,11 @@ import { User } from '../../Models/User';
   styleUrl: './confirm-delete.component.css'
 })
 export class ConfirmDeleteComponent {
-usertoDelete:User;
+@Input() usertoDelete:User;
+
+@Output() OnConfirmation:EventEmitter<boolean>=new EventEmitter<boolean>();
+
+OnConfirmClicked(value:boolean){
+  this.OnConfirmation.emit(value);
+}
 }
